@@ -2,8 +2,7 @@
 
 # dependencies
 node_modules
-
-/.pnp"react-scripts": "5.0.1",
+/.pnp
 .pnp.js
 
 # testing
