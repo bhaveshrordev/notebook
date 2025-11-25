@@ -6,9 +6,15 @@ const port = 3000;
 
 connectToMongo();
 
-app.get('/', (req, res) => {
-  res.send('Hello from backend');
-});
+// Available Routes
+
+app.use('/api/auth', require('./routes/auth'))
+app.use('/api/notes', require('./routes/notes'))
+
+
+// app.get('/', (req, res) => {
+//   res.send('Hello from backend');
+// });
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
