@@ -1,13 +1,70 @@
 // src/context/notes/NoteState.js
-import React from "react";
+import React, { useState } from "react";
 import NoteContext from "./noteContext";
 
 const NoteState = (props) => {
+  const notesInitial = [
+    {
+      _id: "69285eafd7e36e02a0c197c3",
+      user: "6928518a8dc89d2c86d00fda",
+      title: "Happy Tuesday",
+      description: "Keep Huslting always",
+      tag: "personal",
+      date: "2025-11-27T14:22:39.941Z",
+      __v: 0,
+    },
+    {
+      _id: "6941861a0e2f9bb5ff56765f",
+      user: "6928518a8dc89d2c86d00fda",
+      title: "Happy Work Day",
+      description: "Complete your work",
+      tag: "personal",
+      date: "2025-12-16T16:17:30.454Z",
+      __v: 0,
+    },
+    {
+      _id: "69285eafd7e36e02a0c197c3",
+      user: "6928518a8dc89d2c86d00fda",
+      title: "Happy Tuesday",
+      description: "Keep Huslting always",
+      tag: "personal",
+      date: "2025-11-27T14:22:39.941Z",
+      __v: 0,
+    },
+    {
+      _id: "6941861a0e2f9bb5ff56765f",
+      user: "6928518a8dc89d2c86d00fda",
+      title: "Happy Work Day",
+      description: "Complete your work",
+      tag: "personal",
+      date: "2025-12-16T16:17:30.454Z",
+      __v: 0,
+    },
+    {
+      _id: "69285eafd7e36e02a0c197c3",
+      user: "6928518a8dc89d2c86d00fda",
+      title: "Happy Tuesday",
+      description: "Keep Huslting always",
+      tag: "personal",
+      date: "2025-11-27T14:22:39.941Z",
+      __v: 0,
+    },
+    {
+      _id: "6941861a0e2f9bb5ff56765f",
+      user: "6928518a8dc89d2c86d00fda",
+      title: "Happy Work Day",
+      description: "Complete your work",
+      tag: "personal",
+      date: "2025-12-16T16:17:30.454Z",
+      __v: 0,
+    }
+  ];
+
+
+  const [notes, setNotes] = useState(notesInitial)
 
   return (
-    <NoteContext.Provider value={{}}>
-      {props.children}
-    </NoteContext.Provider>
+    <NoteContext.Provider value={{notes, setNotes}}>{props.children}</NoteContext.Provider>
   );
 };
 
