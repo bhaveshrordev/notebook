@@ -21,7 +21,7 @@ const NoteState = (props) => {
     });
 
     const json = await response.json();
-    // console.log(json);
+    console.log(json);
     setNotes(json);
   };
 
@@ -38,6 +38,9 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }),
     });
+
+    const json = await response.json();
+    console.log(json);
 
     console.log("Adding a New Note");
     const note = {
@@ -87,17 +90,23 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }),
     });
 
-    const json = response.json();
+    const json = await response.json();
+    console.log(json);
+
+    let newNotes = JSON.parse(JSON.stringify(notes))
 
     // Logic to edit in client
-    for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
+    for (let index = 0; index < newNotes.length; index++) {
+      const element = newNotes[index];
       if (element._id === id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+        newNotes[index].title = title;
+        newNotes[index].description = description;
+        newNotes[index].tag = tag;
+        break;
       }
     }
+    console.log(newNotes);
+    setNotes(newNotes);
   };
 
   return (

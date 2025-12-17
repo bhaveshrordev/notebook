@@ -5,7 +5,7 @@ import AddNote from "./AddNote";
 
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes, getNotes } = context;
+  const { notes, getNotes, editNote } = context;
 
   useEffect(() => {
     getNotes();
@@ -14,23 +14,27 @@ const Notes = () => {
 
   const updateNote = (currentNote) => {
     ref.current.click();
-    setNote({etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag})
+    setNote({id: currentNote._id, etitle: currentNote.title, edescription: currentNote.description, etag: currentNote.tag})
   };
 
   const [note, setNote] = useState({
+      id: "",
       etitle: "",
-      edescripition: "",
+      edescription: "",
       etag: "default",
     });
 
   const ref = useRef(null);
+  const refClose = useRef(null);
 
   const handleClick = (e) => {
     console.log("Updating the note....", note)
-    e.preventDefault();
+    editNote(note.id, note.etitle, note.edescription, note.etag)
+    refClose.current.click();
   };
 
   const onChange = (e) => {
+    console.log("onchange function")
     setNote({ ...note, [e.target.name]: e.target.value });
   };
 
@@ -94,8 +98,8 @@ const Notes = () => {
                   <input
                     type="text"
                     className="form-control"
-                    id="edescripition"
-                    name="edescripition"
+                    id="edescription"
+                    name="edescription"
                     value={note.edescription}
                     onChange={onChange}
                   />
@@ -110,7 +114,7 @@ const Notes = () => {
                     type="text"
                     className="form-control"
                     id="etag"
-                    name="eFtag"
+                    name="etag"
                     value={note.etag}
                     onChange={onChange}
                   />
@@ -123,6 +127,7 @@ const Notes = () => {
                 type="button"
                 className="btn btn-secondary"
                 data-bs-dismiss="modal"
+                ref={refClose}
               >
                 Close
               </button>
