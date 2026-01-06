@@ -87,6 +87,8 @@ const Notes = () => {
                     name="etitle"
                     value={note.etitle}
                     onChange={onChange}
+                    minLength={5}
+                    required
                   />
                 </div>
 
@@ -102,6 +104,8 @@ const Notes = () => {
                     name="edescription"
                     value={note.edescription}
                     onChange={onChange}
+                    minLength={5}
+                    required
                   />
                 </div>
 
@@ -141,6 +145,9 @@ const Notes = () => {
 
       <div className="row my-3">
         <h1>Your Notes</h1>
+        <div className="container mx-2">
+          {notes.length===0 && 'No Notes To Display'}
+        </div>
         {notes.map((note) => {
           return (
             <Noteitem
