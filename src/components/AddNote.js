@@ -14,7 +14,7 @@ const AddNote = () => {
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note.title, note.descripition, note.tag);
-    setNote({ title: "", descripition: "", tag: ""})
+    setNote({ title: "", descripition: "", tag: "" });
   };
 
   const onChange = (e) => {
@@ -81,7 +81,7 @@ const AddNote = () => {
             type="submit"
             className="btn btn-primary"
             onClick={handleClick}
-            disabled={note.title.length<5 || note.descripition.length<5}
+            disabled={note.title.length < 5 || note.descripition.length < 5}
           >
             Add Note
           </button>
