@@ -19,7 +19,7 @@ const Noteitem = (props) => {
                 deleteNote(note._id);
               }}
             ></i>
-            <i className="far fa-edit mx-2" onClick={() => {updateNote(note)}}></i>
+            <i className="far fa-edit mx-2" onClick={() => {updateNote(note)}} alt="edit"></i>
           </div>
 
           <p className="card-text">
